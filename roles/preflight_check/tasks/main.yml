@@ -1,0 +1,4 @@
+---
+- block:
+    - import_tasks: "01-set-facts.yml"
+    - import_tasks: "02-sanity-checks.yml"

@@ -1,0 +1,37 @@
+---
+- hosts: linux-main
+  gather_facts: yes
+  become: false
+  vars_files:
+    - "group_vars/linux.yml"
+  tasks:
+  - name: Distribution
+    debug: msg="{{ ansible_distribution }}"
+  - name: Distribution version
+    debug: msg="{{ ansible_distribution_version}}"
+  - name: Distribution major version
+    debug: msg="{{ ansible_distribution_major_version }}"
+
+- hosts: linux-main
+  become: yes
+  gather_facts: no
+  vars_files:
+    - "group_vars/linux.yml"
+    - "group_vars/linux-main.yml"
+  roles:
+    - role: "preflight_check"
+    - role: "install-common-software"
+    - role: "docker"
+    # - role: "harness"
+
+# - hosts: "linux-runner"
+#   become: yes
+#   gather_facts: no
+#   vars_files:
+#     - "group_vars/linux.yml"
+#     - "group_vars/linux-runner.yml"
+#   roles:
+#     - role: "preflight_check"
+#     - role: "install-common-software"
+#     - role: "docker"
+#     - role: "harness"

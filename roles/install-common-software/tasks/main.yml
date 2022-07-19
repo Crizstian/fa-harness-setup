@@ -1,0 +1,26 @@
+---
+- block :
+  - name: upgrade all packages
+    yum:
+      name: '*'
+      state: latest
+    when: 
+      - ansible_distribution == "OracleLinux"
+
+  - name: Install Packages on OracleLinux distro
+    yum:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - lsof
+      - unzip
+      - curl
+      - wget
+      - ca-certificates
+      - nc
+      - libselinux-python
+      - yum-utils
+      - device-mapper-persistent-data
+      - lvm2
+    when: 
+      - ansible_distribution == "OracleLinux"

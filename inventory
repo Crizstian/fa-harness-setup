@@ -1,0 +1,14 @@
+linux-1 ansible_ssh_host=172.30.65.119
+#linux-2 ansible_ssh_host=172.30.65.119
+
+[linux-main]
+linux-1
+
+[linux-runner]
+#linux-2
+
+[linux]
+#linux-main
+#linux-runner
+
+[windows]

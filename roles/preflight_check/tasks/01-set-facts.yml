@@ -1,0 +1,19 @@
+---
+- block:
+    - name: Get epoch
+      shell: date +%s
+      register: epoch_time_result
+      failed_when: epoch_time_result.rc != 0
+
+    - name: Set Epoch time, expiration and uniqueness information
+      set_fact:
+        epoch_time: "{{ epoch_time_result.stdout }}"
+
+    - name: Get Date Time
+      shell: date +%Y%m%d-%H%M%S 
+      register: creation_date_time_result
+      failed_when: creation_date_time_result.rc != 0
+
+    - name: Set time, expiration and uniqueness information
+      set_fact:
+        creation_date_time: "{{ creation_date_time_result.stdout }}"

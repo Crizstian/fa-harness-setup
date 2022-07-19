@@ -1,0 +1,11 @@
+---
+- block:
+  - import_tasks:  "01-drone-server-setup.yml"
+  - import_tasks:  "03-cgcd-delegate-setup.yml"
+  when:
+    - machine_type == "main"
+
+- block:
+  - import_tasks:  "02-drone-runner-setup.yml"
+  when:
+    - machine_type == "runner"

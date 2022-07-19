@@ -1,0 +1,14 @@
+- block:
+  - name: "Sanity checking facts this role set"
+    assert:
+      that:
+        - epoch_time is defined and epoch_time | length > 0
+        - creation_date_time is defined and creation_date_time | length > 0
+
+
+  # - name: debug
+  #   ansible.builtin.debug:
+  #     msg: "{{ ansible_distribution }}"
+  # - name: debug
+  #   ansible.builtin.debug:
+  #     msg: "{{ creation_date_time }}"
