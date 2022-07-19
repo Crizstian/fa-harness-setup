@@ -1,9 +1,6 @@
 ---
-- hosts: linux
-  gather_facts: yes
-  become: false
-  vars_files:
-    - "group_vars/linux.yml"
+- hosts: localhost
+  connection: local
   tasks:
   - name: Distribution
     debug: msg="{{ ansible_distribution }}"
@@ -15,14 +12,10 @@
     debug: msg={{ansible_all_ipv4_addresses}}
   - name: Default IPv4 address
     debug: msg={{ansible_default_ipv4.address}}
-
-- hosts: linux
-  become: yes
-  gather_facts: no
+    
+- hosts: localhost
+  connection: local
   vars_files:
-    - "group_vars/linux.yml"
+    - "group_vars/macos.yml"
   roles:
-    - role: "preflight_check"
-    - role: "install-common-software"
-    # - role: "docker"
-    # - role: "harness"
+    - role: "harness"

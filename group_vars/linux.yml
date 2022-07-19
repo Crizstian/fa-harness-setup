@@ -1,9 +1,6 @@
 ---
 ansible_user: alejandro.talamantes
-cdcg_delegate_url: https://app.harness.io/gratis/api/setup/delegates/download?accountId=tNj0VHWCSYK3Qk9ryqi6Fg&token=eyJhbGciOiJIUzI1NiJ9.eyJyZXNvdXJjZSI6ImRlbGVnYXRlLnROajBWSFdDU1lLM1FrOXJ5cWk2RmciLCJpc3MiOiJIYXJuZXNzIEluYyIsImV4cCI6MTY1ODIwMTM2NCwiaWF0IjoxNjU4MTk3NzY0fQ.bHrJAOOER6UF9dW8eCzL4Y3AUNdezc_xX1O1BD_rXis&delegateName=farmacias-ahorro-pov&delegateProfileId=DwTp4l0iQEyeD_e9vryClQ&tokenName=default
-gitlab_application_id: 7615c896b4e719e9594f1131e074c317c7311ccdc9d286ed8ae021e09bf03448
-gitlab_secret_id: 42c8726849b3781f022d1f7387ebaff0ceaab4096df681b3eaeff690d5be9f73
 gitlab_url: http://git.fahorro.com.mx
-drone_server_ip: 172.30.65.119
-drone_secret: 45dac1cf4c953f4d70aad269c3cd845b
+gitlab_application_id: 7615c896b4e719e9594f1131e074c317c7311ccdc9d286ed8ae021e09bf03448
 drone_runner_url: https://github.com/drone-runners/drone-runner-exec/releases/latest/download/drone_runner_exec_linux_arm64.tar.gz
+harness_dir: /home/alejandro.talamantes

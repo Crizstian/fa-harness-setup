@@ -1,0 +1,5 @@
+---
+gitlab_url: https://gitlab.com
+gitlab_application_id: 26aaf6bc9aa1f02ab1f0f693c7740b31495510ee520cfdaf18407b56326765f3
+drone_runner_url: https://github.com/drone-runners/drone-runner-exec/releases/latest/download/drone_runner_exec_linux_arm64.tar.gz
+harness_dir: /tmp

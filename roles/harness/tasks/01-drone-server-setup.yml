@@ -1,5 +1,19 @@
 ---
 - block: 
+  - name: Generate Drone shared secret
+    shell: |
+      openssl rand -hex 16
+    register: shared
+    failed_when: shared.rc != 0
+
+  - name: Set shared secret
+    set_fact:
+      shared_secret: "{{ shared.stdout }}"
+
+  - name: Pull Drone Server Image
+    shell: |
+      docker pull drone/drone:2
+
   - name: Run Harness Delegate
     shell: |
       docker run \
@@ -7,8 +21,8 @@
       --env=DRONE_GITLAB_SERVER={{ gitlab_url }} \
       --env=DRONE_GITLAB_CLIENT_ID={{ gitlab_application_id }} \
       --env=DRONE_GITLAB_CLIENT_SECRET={{ gitlab_secret_id }} \
-      --env=DRONE_RPC_SECRET={{ drone_secret }} \
-      --env=DRONE_SERVER_HOST={{ drone_server_ip }} \
+      --env=DRONE_RPC_SECRET={{ shared_secret }} \
+      --env=DRONE_SERVER_HOST={{ ansible_default_ipv4.address }} \
       --env=DRONE_SERVER_PROTO=http \
       --publish=80:80 \
       --publish=443:443 \

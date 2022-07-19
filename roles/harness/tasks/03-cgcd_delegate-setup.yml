@@ -1,14 +1,19 @@
 ---
 - block: 
   - name: Downloading Harness Delegate
-    unarchive:
-      src: "{{ cdcg_delegate_url | trim }}"
-      dest: "/home/alejandro.talamantes"
-      mode: 0755
-      remote_src: yes
+    get_url:
+      url: "{{ cdcg_delegate_url | trim }}"
+      dest: "{{ harness_dir }}/harness-delegate-docker.tar.gz"
+
+  - name: Unarchive Harness Delegate
+    shell: "cd {{ harness_dir }} && tar -xvzf {{ harness_dir }}/harness-delegate-docker.tar.gz"
   
+  - name: Pull Harness Delegate Docker Image
+    shell: |
+      docker pull harness/delegate:latest
+
   - name: Run Harness Delegate
-    shell: "/home/alejandro.talamantes/harness-delegate-docker/launch-harness-delegate.sh"
+    shell: "{{ harness_dir }}/harness-delegate-docker/launch-harness-delegate.sh"
     register: delegate
     failed_when: delegate.rc != 0
   
